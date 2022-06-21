@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=LED Test
+Comment=IconTest Link
+Exec=/home/pi/ledApp/led_start.sh
+Type=Application
+Categories=Application;Development;
