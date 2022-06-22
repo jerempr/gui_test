@@ -16,27 +16,27 @@ class Setting(QObject):
     @pyqtSlot()
     def staGreenOn(self):   
         # turn ON  
-        os.system("sudo sh -c 'echo 255 > /sys/class/leds/usr_led2/brightness'")
+        os.system("sh -c 'echo 255 > /sys/class/leds/usr_led2/brightness'")
     @pyqtSlot()
     def staGreenOff(self):     
         # turn OFF  
-        os.system("sudo sh -c 'echo 0 > /sys/class/leds/usr_led2/brightness'")
+        os.system("sh -c 'echo 0 > /sys/class/leds/usr_led2/brightness'")
  
     # staRed
     @pyqtSlot()
     def staRedOn(self):     
-        os.system("sudo sh -c 'echo 255 > /sys/class/leds/usr_led1/brightness'")
+        os.system("sh -c 'echo 255 > /sys/class/leds/usr_led1/brightness'")
     @pyqtSlot()
     def staRedOff(self):     
-        os.system("sudo sh -c 'echo 0 > /sys/class/leds/usr_led1/brightness'")
+        os.system("sh -c 'echo 0 > /sys/class/leds/usr_led1/brightness'")
  
     # usrGreen
     @pyqtSlot()
     def usrGreenOn(self):     
-        os.system("sudo sh -c 'echo 255 > /sys/class/leds/usr_led0/brightness'")
+        os.system("sh -c 'echo 255 > /sys/class/leds/usr_led0/brightness'")
     @pyqtSlot()
     def usrGreenOff(self):     
-        os.system("sudo sh -c 'echo 0 > /sys/class/leds/usr_led0/brightness'")
+        os.system("sh -c 'echo 0 > /sys/class/leds/usr_led0/brightness'")
  
     # close
     @pyqtSlot()

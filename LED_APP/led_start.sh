@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /home/root/GUI_Demo_Custom
-DISPLAY=:0 python3 main.py
+DISPLAY=:-90 python3 main.py

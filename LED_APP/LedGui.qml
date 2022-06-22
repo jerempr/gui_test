@@ -10,6 +10,11 @@ Item {
     // define width and height of the app
     width: 1280
     height: 720
+
+    //Need to rotate the application in order to have it in landscape
+    transform: Rotation {
+        origin.x:360; origin.y: 360; angle: 90
+    }
  
     // Rectangle block for the heading
     Rectangle {
