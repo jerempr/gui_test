@@ -35,7 +35,7 @@ Item {
         width: 200
         height: 91
         text: "ON" // text inside the button
-        font.pointSize: 28 // text font
+        font.pointSize: 15 // text font
         palette.button: "green" // button color
         palette.buttonText: "white" // text color
         // Used to access the button control class in the Python file and turn on the LED
@@ -53,7 +53,7 @@ Item {
         width: 200
         height: 91
         text: "OFF"
-        font.pointSize: 28
+        font.pointSize: 15
         palette.button: "green"
         palette.buttonText: "white"
         onClicked:
@@ -70,7 +70,7 @@ Item {
         width: 200
         height: 91
         text: "ON"
-        font.pointSize: 28
+        font.pointSize: 15
         palette.button: "red"
         palette.buttonText: "white"
         onClicked:
@@ -87,7 +87,7 @@ Item {
         width: 200
         height: 91
         text: "OFF"
-        font.pointSize: 28
+        font.pointSize: 15
         palette.button: "red"
         palette.buttonText: "white"
         onClicked:
@@ -104,7 +104,7 @@ Item {
         width: 200
         height: 91
         text: "ON"
-        font.pointSize: 28
+        font.pointSize: 15
         palette.button: "green"
         palette.buttonText: "white"
         onClicked:
@@ -121,7 +121,7 @@ Item {
         width: 200
         height: 91
         text: "OFF"
-        font.pointSize: 28
+        font.pointSize: 15
         palette.button: "green"
         palette.buttonText: "white"
         onClicked:
