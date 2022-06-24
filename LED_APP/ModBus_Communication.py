@@ -20,10 +20,10 @@ log.setLevel(logging.DEBUG)
 
 UNIT = 0x01
 
-def reading_addr(addr,Type = 'float'):
+def Read_addr(addr,Type = 'float'):
     """ Allows to read a value from modbus API with IP address 192.168.0.90 
     ## Pameters:
-    - addr: ( default : 0 ) the address of the infomatin you want to rea
+    - addr:  the address of the infomation you want to read
     - Type: ( default : 'float' ) the type of data stored at this address: 
         - you can specify float, string, bool, 16 uint or 8int
     ## Returns:
@@ -60,7 +60,7 @@ def reading_addr(addr,Type = 'float'):
     client.close()
     return value
 
-def Read_all():
+def Read_all_addr():
     """Allows to read all 120 addresses from the API
     # Returns:
     - list of 120 rows of things contined in the addresses and 2 columns ( address / actual value )
@@ -80,50 +80,68 @@ def Read_all():
     VALUES = [[],[]]
     for i in A_float:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'float'))
+        VALUES[1].append(Read_addr(i,'float'))
     for i in B_bool:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'bool'))
+        VALUES[1].append(Read_addr(i,'bool'))
     for i in C_float:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'float'))
+        VALUES[1].append(Read_addr(i,'float'))
     for i in D_bool:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'bool'))
+        VALUES[1].append(Read_addr(i,'bool'))
     for i in E_float:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'float'))
+        VALUES[1].append(Read_addr(i,'float'))
     for i in F_bool:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'bool'))
+        VALUES[1].append(Read_addr(i,'bool'))
     for i in G_float:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'float'))
+        VALUES[1].append(Read_addr(i,'float'))
     for i in H_bool:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'bool'))
+        VALUES[1].append(Read_addr(i,'bool'))
     # for i in I_uint:
     #     VALUES[0].append(i)
-    #     VALUES[1].append(reading_addr(i,'float'))
+    #     VALUES[1].append(Read_addr(i,'float'))
     # for i in J_usint:
     #     VALUES[0].append(i)
-    #     VALUES[1].append(reading_addr(i,'float'))
+    #     VALUES[1].append(Read_addr(i,'float'))
     # for i in K_udint:
     #     VALUES[0].append(i)
-    #     VALUES[1].append(reading_addr(i,'bool'))
+    #     VALUES[1].append(Read_addr(i,'bool'))
     for i in L_bool:
         VALUES[0].append(i)
-        VALUES[1].append(reading_addr(i,'bool'))
+        VALUES[1].append(Read_addr(i,'bool'))
     
-    
-    
-    
+def Write_addr(addr,object):
+    """ Allows to write a value to a modbus API with IP address 192.168.0.90 
+    ## Pameters:
+    - addr:  the address of the infomation you want to write
+    - object: the type of data you want to be stored at this address
+    """
+    # --------------------------------------------------------------------------- #
+    # Configuration et connexion au client
+    # --------------------------------------------------------------------------- #
+    log.debug("Connecting to the client...")
+    client = ModbusTcpClient(host='192.168.0.90')
+    client.connect()
+    log.debug("Connected to the client")
+    # --------------------------------------------------------------------------- #
+    # écriture
+    # --------------------------------------------------------------------------- #
+    client.write_register(addr,object)
+    # --------------------------------------------------------------------------- #
+    # Close client
+    # --------------------------------------------------------------------------- #
+    client.close() 
     
     
 
 # while (1):
 #     addr = int(input("\nEntrer l'adresse de lecture: "))
-#     reading_addr(83)
+#     Read_addr(83)
 #     sleep(2)
 
-reading_addr(95)
+Read_addr(95)
