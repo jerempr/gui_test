@@ -1,7 +1,7 @@
 from optparse import Values
 from pymodbus3.client.sync import ModbusTcpClient
 from pymodbus3.constants import Endian
-from pymodbus3.payload import BinaryPayloadDecoder
+from pymodbus3.payload import BinaryPayloadDecoder, BinaryPayloadBuilder
 import logging
 from time import sleep
 
@@ -131,7 +131,11 @@ def Write_addr(addr,object):
     # --------------------------------------------------------------------------- #
     # écriture
     # --------------------------------------------------------------------------- #
-    client.write_register(addr,object)
+    builder = BinaryPayloadBuilder(endian = Endian.Big)
+    builder.add_32bit_float(object)
+    payload = builder.build
+    
+    client.write_register(addr,payload,skip_encode=True)
     # --------------------------------------------------------------------------- #
     # Close client
     # --------------------------------------------------------------------------- #
@@ -144,4 +148,10 @@ def Write_addr(addr,object):
 #     Read_addr(83)
 #     sleep(2)
 
-Read_addr(95)
+
+testa = 101
+Read_addr(testa)
+sleep(1)
+Write_addr(testa,3.12)
+sleep(1)
+Read_addr(testa)
