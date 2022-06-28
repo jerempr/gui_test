@@ -3,6 +3,7 @@ from pymodbus3.client.sync import ModbusTcpClient
 from pymodbus3.constants import Endian
 from pymodbus3.payload import BinaryPayloadDecoder, BinaryPayloadBuilder
 import logging
+from colorama import Fore
 from time import sleep
 
 # --------------------------------------------------------------------------- #
@@ -28,15 +29,17 @@ class OperaMetrix_ModbusTCP_client():
         # --------------------------------------------------------------------------- #
         # Configuration et connexion au client
         # --------------------------------------------------------------------------- #
-        self.client.connect()
-        log.debug("Connected to the client")
+        if self.client.connect():
+            log.debug("Connected to the client")
+        else:
+            log.debug("CONNEXION ERROR")
 
     def close(self): 
         # --------------------------------------------------------------------------- #
         # Close client
         # --------------------------------------------------------------------------- #
-        self.client.close()
-        log.debug("disconnected from client")   
+        if self.client.close():
+            log.debug("disconnected from client")   
 
     def Read_addr(self,addr,Type = 'float'):
         """ Allows to read a value from modbus API with IP address 192.168.0.90 
@@ -51,9 +54,9 @@ class OperaMetrix_ModbusTCP_client():
         # Test lecture et décodage Modbus
         # --------------------------------------------------------------------------- #
         response = self.client.read_holding_registers(addr,count=3)
-        log.debug(f"\n Voici la réponse brute de PyModbus: {response}\n")
+        # log.debug(f"\n Voici la réponse brute de PyModbus: {response}\n")
         decoder = BinaryPayloadDecoder.from_registers(registers=response.registers, endian=Endian.Big)
-        log.debug(f"Voici le décoder: {decoder}")
+        # log.debug(f"Voici le décoder: {decoder}")
         if Type == 'float':
             value = decoder.decode_32bit_float()
         elif Type == 'string':
@@ -64,7 +67,7 @@ class OperaMetrix_ModbusTCP_client():
             value = decoder.decode_16bit_uint()
         elif Type == '8int':
             value = decoder.decode_8bit_int()
-        log.debug (f"\033[1;31;1m \nHere is the response: {value}\n")
+        log.debug (Fore.RED + f"Here is the response: {value}" + Fore.RESET)
         # --------------------------------------------------------------------------- #
         # Close client
         # --------------------------------------------------------------------------- #
@@ -136,8 +139,10 @@ class OperaMetrix_ModbusTCP_client():
         # --------------------------------------------------------------------------- #
         builder = BinaryPayloadBuilder(endian = Endian.Big)
         builder.add_32bit_float(object)
-        payload = builder.buil
-        self.client.write_register(addr,payload,skip_encode=True)
+        payload = builder.build()
+        # print (f"TEEEEEST {payload}\n")
+        self.client.write_registers(addr,payload,skip_encode=True)
+        log.debug (Fore.RED + f"writing {object} in {addr}"+ Fore.RESET)
         
   
 
@@ -151,7 +156,7 @@ Myclient.connect()
 testa = 101
 Myclient.Read_addr(testa)
 sleep(1)
-Myclient.Write_addr(testa,3.12)
+Myclient.Write_addr(testa,2.5)
 sleep(1)
 Myclient.Read_addr(testa)
 Myclient.close()
