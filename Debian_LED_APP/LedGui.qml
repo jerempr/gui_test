@@ -195,14 +195,24 @@ Item {
         text: "STA RED"
         font.pixelSize: 45
     }
-    // IP Address
-    Text {
-        id: ip_addr
+    // IP Address    
+    Label{
+        id: textIP
         x: 16
         y: 12
-        text: "IP :"
+        text: qsTr("IP: ")
         font.pixelSize: 20
+       
     }
+    // // Here we take the result of text processing
+    // Connections {
+    //     target: _Setting
+    //     // Signal Handler 
+    //     onTextResult: {
+    //         // textLabel - was given through arguments=['textLabel']
+    //         textIP.setText = textLabel
+    //     }
+    // } 
  
     // USR GREEN text
     Text {

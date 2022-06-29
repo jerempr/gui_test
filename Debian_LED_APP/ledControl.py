@@ -38,7 +38,12 @@ class Setting(QObject):
     def usrGreenOff(self):     
         os.system("sudo sh -c 'echo 0 > /sys/class/leds/usr_led0/brightness'")
  
+    # @Slot()
+    # def textIP(self):
+    #     self.textIP.setText('textLabel')
+    
     # close
     @Slot()
     def closeWindow(self):
         sys.exit()
+
