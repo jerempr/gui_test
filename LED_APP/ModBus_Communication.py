@@ -146,12 +146,31 @@ class OperaMetrix_ModbusTCP_client():
 #     Read_addr(83)
 #     sleep(2)
 
-Myclient = OperaMetrix_ModbusTCP_client()
-Myclient.connect()
-testa = 101
-Myclient.Read_addr(testa)
-sleep(1)
-Myclient.Write_addr(testa,3.12)
-sleep(1)
-Myclient.Read_addr(testa)
-Myclient.close()
+# Myclient = OperaMetrix_ModbusTCP_client()
+# Myclient.connect()
+# testa = 101
+# Myclient.Read_addr(testa)
+# sleep(1)
+# Myclient.Write_addr(testa,3.12)
+# sleep(1)
+# Myclient.Read_addr(testa)
+# Myclient.close()
+
+while(1):
+    Myclient = OperaMetrix_ModbusTCP_client()
+    ans = int(input(F"\nSouhaitez vous lire (0) ou écrire (1)"))
+    if ans == 0:
+        Myclient.conect()
+        addr = int(input("\nEntrer l'adresse de lecture: "))
+        Myclient.Read_addr(addr) 
+        Myclient.close()
+        sleep(2)
+    elif ans == 1 :
+        Myclient.conect()
+        addr = int(input("\nEntrer l'adresse d'écriture: "))
+        obj = int(input("\nEntrer la valeur à écrire: "))
+        Myclient.Write_addr(addr,obj) 
+        Myclient.close()
+        sleep(2)
+
+
