@@ -15,7 +15,7 @@ FORMAT = (
 )
 logging.basicConfig(format=FORMAT)
 log = logging.getLogger()
-log.setLevel(logging.DEBUG)
+log.setLevel(logging.INFO)
 
 
 
@@ -30,7 +30,7 @@ class OperaMetrix_ModbusTCP_client():
         # Configuration et connexion au client
         # --------------------------------------------------------------------------- #
         if self.client.connect():
-            log.debug("Connected to the client")
+            log.info("Connected to the client")
         else:
             log.debug("CONNEXION ERROR")
 
@@ -39,7 +39,7 @@ class OperaMetrix_ModbusTCP_client():
         # Close client
         # --------------------------------------------------------------------------- #
         if self.client.close():
-            log.debug("disconnected from client")   
+            log.info("disconnected from client")   
 
     def Read_addr(self,addr,Type = 'float'):
         """ Allows to read a value from modbus API with IP address 192.168.0.90 
@@ -67,7 +67,7 @@ class OperaMetrix_ModbusTCP_client():
             value = decoder.decode_16bit_uint()
         elif Type == '8int':
             value = decoder.decode_8bit_int()
-        log.debug (Fore.RED + f"Here is the response: {value}" + Fore.RESET)
+        log.info (Fore.RED + f"Here is the response: {value}" + Fore.RESET)
         # --------------------------------------------------------------------------- #
         # Close client
         # --------------------------------------------------------------------------- #
@@ -142,7 +142,7 @@ class OperaMetrix_ModbusTCP_client():
         payload = builder.build()
         # print (f"TEEEEEST {payload}\n")
         self.client.write_registers(addr,payload,skip_encode=True)
-        log.debug (Fore.RED + f"writing {object} in {addr}"+ Fore.RESET)
+        log.info (Fore.RED + f"writing {object} in {addr}"+ Fore.RESET)
         
   
 
@@ -162,9 +162,9 @@ class OperaMetrix_ModbusTCP_client():
 # Myclient.close()
 while(1):
     Myclient = OperaMetrix_ModbusTCP_client()
-    ans = int(input(F"\nSouhaitez vous lire (0) ou écrire (1)"))
+    ans = int(input(F"\nSouhaitez vous lire (0) ou écrire (1) :  "))
     if ans == 0:
-        Myclient.conect()
+        Myclient.connect()
         addr = int(input("\nEntrer l'adresse de lecture: "))
         Myclient.Read_addr(addr) 
         Myclient.close()
