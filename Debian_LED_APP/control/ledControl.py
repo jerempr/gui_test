@@ -2,8 +2,10 @@
 import sys
 import os
 
+
+
 if 'PyQt5' in sys.modules:
-	from PyQt5.QtCore import *
+	from PyQt5.QtCore import QObject, pyqtSlot as Slot
 	print("this app use pyqt5")
 else:
 	from PySide2.QtCore import *
@@ -38,12 +40,9 @@ class Setting(QObject):
     def usrGreenOff(self):     
         os.system("sudo sh -c 'echo 0 > /sys/class/leds/usr_led0/brightness'")
  
-    # @Slot()
-    # def textIP(self):
-    #     self.textIP.setText('textLabel')
-    
     # close
     @Slot()
     def closeWindow(self):
+        os.system("rm /home/pi/GUI/MyGui/Debian_LED_APP/QML_UI/*qmlc")
         sys.exit()
 
