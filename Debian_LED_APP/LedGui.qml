@@ -11,10 +11,10 @@ Item {
     width: 1280
     height: 720
 
-    //Need to rotate the application in order to have it in landscape
-    transform: Rotation {
-        origin.x:360; origin.y: 360; angle: 90
-    }
+    // //Need to rotate the application in order to have it in landscape in yocto project
+    // transform: Rotation {
+    //     origin.x:360; origin.y: 360; angle: 90
+    // }
  
     // Rectangle block for the heading
     Rectangle {
@@ -26,11 +26,33 @@ Item {
         color: "blue" // Rectangle block color
         /* You can also enter **hexadecimal values** for the color field */
     }
+    // Rectangle block for the menu
+    Rectangle {
+        id: menuBlock
+        x: 0 // Rectangle block position in x-axis
+        y: 139 // Rectangle block position in y-axis
+        width: 134 // Rectangle block width
+        height: 581 // Rectangle block height
+        color: "#DFDCDC" // Rectangle block color
+    }
+    
+    // Button Modbus page
+    Button {
+        id: staModbusPage
+        x: 0 // Rectangle block position in x-axis
+        y: 139 // Rectangle block position in y-axis
+        width: 134 // Rectangle block width
+        height: 117 // Rectangle block height
+        palette.button: "black" // Rectangle block color
+        text: "Modbus"
+        font.pointSize: 20
+        palette.buttonText: "white"
+    }
  
     // left top button (ON)
     Button {
         id: staGreenOn
-        x: 159
+        x: 199
         y: 272
         width: 200
         height: 91
@@ -48,7 +70,7 @@ Item {
     // left bottom button (OFF)
     Button {
         id: staGreenOff
-        x: 159
+        x: 199
         y: 496
         width: 200
         height: 91
@@ -65,7 +87,7 @@ Item {
     // middle top button (ON)
     Button {
         id: staRedOn
-        x: 540
+        x: 580
         y: 272
         width: 200
         height: 91
@@ -82,7 +104,7 @@ Item {
     // middle bottom button (OFF)
     Button {
         id: staRedOff
-        x: 540
+        x: 580
         y: 496
         width: 200
         height: 91
@@ -99,7 +121,7 @@ Item {
     // right top button (ON)
     Button {
         id: usrGreenOn
-        x: 918
+        x: 958
         y: 272
         width: 200
         height: 91
@@ -116,7 +138,7 @@ Item {
     // right bottom button (OFF)
     Button {
         id: usrGreenOff
-        x: 918
+        x: 958
         y: 496
         width: 200
         height: 91
@@ -159,7 +181,7 @@ Item {
     // STA GREEN text
     Text {
         id: staGreen
-        x: 135
+        x: 227
         y: 400
         text: "STA GREEN"
         font.pixelSize: 45
@@ -168,16 +190,34 @@ Item {
     // STA RED text
     Text {
         id: staRed
-        x: 547
+        x: 621
         y: 400
         text: "STA RED"
         font.pixelSize: 45
     }
+    // IP Address    
+    Label{
+        id: textIP
+        x: 16
+        y: 12
+        text: qsTr("IP: ")
+        font.pixelSize: 20
+       
+    }
+    // // Here we take the result of text processing
+    // Connections {
+    //     target: _Setting
+    //     // Signal Handler 
+    //     onTextResult: {
+    //         // textLabel - was given through arguments=['textLabel']
+    //         textIP.setText = textLabel
+    //     }
+    // } 
  
     // USR GREEN text
     Text {
         id: usrGreen
-        x: 891
+        x: 977
         y: 400
         text: "USR GREEN"
         font.pixelSize: 45

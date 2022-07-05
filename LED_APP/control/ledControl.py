@@ -2,8 +2,10 @@
 import sys
 import os
 
+
+
 if 'PyQt5' in sys.modules:
-	from PyQt5.QtCore import *
+	from PyQt5.QtCore import QObject, pyqtSlot as Slot
 	print("this app use pyqt5")
 else:
 	from PySide2.QtCore import *
@@ -13,32 +15,34 @@ else:
 class Setting(QObject):
  
     # staGreen ON/OFF
-    @pyqtSlot()
+    @Slot()
     def staGreenOn(self):   
         # turn ON  
         os.system("sh -c 'echo 255 > /sys/class/leds/usr_led2/brightness'")
-    @pyqtSlot()
+    @Slot()
     def staGreenOff(self):     
         # turn OFF  
         os.system("sh -c 'echo 0 > /sys/class/leds/usr_led2/brightness'")
  
     # staRed
-    @pyqtSlot()
+    @Slot()
     def staRedOn(self):     
         os.system("sh -c 'echo 255 > /sys/class/leds/usr_led1/brightness'")
-    @pyqtSlot()
+    @Slot()
     def staRedOff(self):     
         os.system("sh -c 'echo 0 > /sys/class/leds/usr_led1/brightness'")
  
     # usrGreen
-    @pyqtSlot()
+    @Slot()
     def usrGreenOn(self):     
         os.system("sh -c 'echo 255 > /sys/class/leds/usr_led0/brightness'")
-    @pyqtSlot()
+    @Slot()
     def usrGreenOff(self):     
         os.system("sh -c 'echo 0 > /sys/class/leds/usr_led0/brightness'")
  
     # close
-    @pyqtSlot()
+    @Slot()
     def closeWindow(self):
+        os.system("rm /home/pi/GUI/MyGui/Debian_LED_APP/QML_UI/*qmlc")
         sys.exit()
+

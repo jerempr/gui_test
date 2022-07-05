@@ -1,6 +1,8 @@
 # import libraries
 import sys
 
+
+
 try:
 	import PySide2.QtQml
 except ImportError:
@@ -18,15 +20,24 @@ else:
 	print("this app use pyside2")
 
 from ledControl import Setting
+from NetInfo import Netinfo
  
 # launch the app
 if __name__ == '__main__':
     app = QApplication([])
     engine = QQmlApplicationEngine()
     # location of the fullscreen app that we created before
-    url = QUrl("./App.qml")
+    url = QUrl("../QML_UI/App.ui.qml")
     context = engine.rootContext()
+    
     seting = Setting()
+    netinfo = Netinfo()
+
+    
     context.setContextProperty("_Setting", seting)
+    context.setContextProperty("_Netinfo", netinfo)
+    
+    netinfo.start()
+    
     engine.load(url)
     app.exec_()
