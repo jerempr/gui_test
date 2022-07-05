@@ -11,7 +11,7 @@ ApplicationWindow {
     visibility: "FullScreen"
  
     // initialize the first window of the application
-    property var iniITEM: "P1_Led.ui.qml"
+    property var iniITEM: "P1.qml"
  
     // stack-based navigation model
     StackView {
@@ -19,25 +19,27 @@ ApplicationWindow {
         initialItem: iniITEM
     }
     
-     // Print IP and Eth
-    Networkinfo_block {
-        id: netinfoblock
-        x: 10
-        y: 10
-        n_aText: Data.NetworkValues.displaywifi
-        gadgetText: Data.NetworkValues.displayethernet
-    }
+    //  // Print IP and Eth
+    // Networkinfo_block {
+    //     id: netinfoblock
+    //     x: 10
+    //     y: 10
+    //     n_aText: Data.NetworkValues.displaywifi
+    //     gadgetText: Data.NetworkValues.displayethernet
+    // }
 
     Menu_block {
         id: menublock
         x: 0
-        y: 145
+        y: 0
+    }
+
     }
     
     // close button
     Button {
         id: close
-        x: 1200
+        x: 0
         y: 0
         width: 80
         height: 31

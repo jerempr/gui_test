@@ -1,7 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=Debian_LED_APP
-Comment=IconTest Link
-Exec=/home/pi/gui_test/Debian_LED_APP/led_start.sh
-Type=Application
-Categories=Application;Development;
