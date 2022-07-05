@@ -1,0 +1,8 @@
+# code compilé:
+*.pyc
+__pycache__
+*.qmlc
+
+# Tests
+test.*
+Test.*
