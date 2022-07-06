@@ -31,7 +31,7 @@ ApplicationWindow {
         y: 10
         n_aText: Data.NetworkValues.displaywifi
         gadgetText: Data.NetworkValues.displayethernet
-        transform: Rotation {origin.x:360; origin.y: 360; angle: 90}
+        transform: Rotation {origin.x:350; origin.y: 350; angle: 90}
     }
 
     Menu_block {
