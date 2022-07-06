@@ -19,7 +19,6 @@ else:
 	from PySide2.QtCore import *
 	print("this app use pyside2")
 
-from ledControl import Setting
 from NetInfo import Netinfo
  
 # launch the app
@@ -30,11 +29,9 @@ if __name__ == '__main__':
     url = QUrl("../QML_UI/App.ui.qml")
     context = engine.rootContext()
     
-    seting = Setting()
     netinfo = Netinfo()
 
     
-    context.setContextProperty("_Setting", seting)
     context.setContextProperty("_Netinfo", netinfo)
     
     netinfo.start()
