@@ -8,3 +8,7 @@ test.*
 Test.*
 test
 Test
+
+# Logfiles
+Guilogs
+*logs*

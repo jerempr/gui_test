@@ -39,14 +39,14 @@ Item {
         font.pixelSize: 60
     }
 
-    Rectangle{
-        id: modbusrecttest
-        x: 670
-        y: 270
-        width: 200
-        height: 100
-        color: "yellow"
-    }
+    // Rectangle{
+    //     id: modbusrecttest
+    //     x: 670
+    //     y: 270
+    //     width: 200
+    //     height: 100
+    //     color: "yellow"
+    // }
     
     Modbusinfo_block{
         id: modbusinfoblock

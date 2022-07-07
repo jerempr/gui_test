@@ -2,21 +2,22 @@ from optparse import Values
 from pymodbus3.client.sync import ModbusTcpClient
 from pymodbus3.constants import Endian
 from pymodbus3.payload import BinaryPayloadDecoder, BinaryPayloadBuilder
-import logging
+from logger import *
 from colorama import Fore
 from time import sleep
 
-# --------------------------------------------------------------------------- #
-# log config
-# --------------------------------------------------------------------------- #
-FORMAT = (
-    "%(asctime)-15s %(threadName)-15s "
-    "%(levelname)-8s %(module)-15s:%(lineno)-8s %(message)s"
-)
-logging.basicConfig(format=FORMAT)
-log = logging.getLogger()
-log.setLevel(logging.DEBUG)
 
+# import logging
+# # --------------------------------------------------------------------------- #
+# # log config
+# # --------------------------------------------------------------------------- #
+# FORMAT = (
+#     "%(asctime)-15s %(threadName)-15s "
+#     "%(levelname)-8s %(module)-15s:%(lineno)-8s %(message)s"
+# )
+# logging.basicConfig(format=FORMAT)
+# log = logging.getLogger()
+# log.setLevel(logging.DEBUG)
 
 
 UNIT = 0x01
@@ -41,19 +42,20 @@ class OperaMetrix_ModbusTCP_client():
         if self.client.close():
             log.debug("disconnected from client")   
 
-    def Read_addr(self,addr,Type = 'float'):
+    def Read_addr(self,addr,Type = 'float',verbose = True):
         """ Allows to read a value from modbus API with IP address 192.168.0.90 
         ## Pameters:
         - addr:  the address of the infomation you want to read
         - Type: ( default : 'float' ) the type of data stored at this address: 
-            - you can specify float, string, bool, 16 uint or 8int
+            - you can specify float, string, bool, 16uint or 8uint
         ## Returns:
         - value of the address asked
         """
         # --------------------------------------------------------------------------- #
         # Test lecture et décodage Modbus
         # --------------------------------------------------------------------------- #
-        response = self.client.read_holding_registers(addr,count=3)
+        response = self.client.read_holding_registers(int(addr),count=3)
+        print (response)
         # log.debug(f"\n Voici la réponse brute de PyModbus: {response}\n")
         decoder = BinaryPayloadDecoder.from_registers(registers=response.registers, endian=Endian.Big)
         # log.debug(f"Voici le décoder: {decoder}")
@@ -62,16 +64,24 @@ class OperaMetrix_ModbusTCP_client():
         elif Type == 'string':
             value = decoder.decode_string(8)
         elif Type == 'bool':
-            value = decoder.decode_bits()
+            b = addr%int(addr)
+            if b == 0:
+                value = decoder.decode_bits()[0]
+            elif 0.051>b and b>0.049:
+                value = decoder.decode_bits()[1]
+            elif 0.11>b and b>0.099:
+                value = decoder.decode_bits()[2]
         elif Type == '16uint':
-            value = decoder.decode_16bit_uint()
-        elif Type == '8int':
-            value = decoder.decode_8bit_int()
-        log.info (Fore.RED + f"Here is the response: {value}" + Fore.RESET)
-        # --------------------------------------------------------------------------- #
-        # Close client
-        # --------------------------------------------------------------------------- #
-        return value
+            value = decoder.decode_16bit_int()
+        elif Type == '8uint':
+            value = decoder.decode_8bit_uint()
+        else :
+            log.error ("Wrong type given")
+            exit()
+        if verbose:
+            log.info (Fore.RED + f"Here is the response: {value}" + Fore.RESET)
+            return value
+        
 
     def Read_all_addr(self):
         """Allows to read all 120 addresses from the API
@@ -128,20 +138,50 @@ class OperaMetrix_ModbusTCP_client():
             VALUES[0].append(i)
             VALUES[1].append(self.Read_addr(i,'bool'))
     
-    def Write_addr(self,addr,object):
+    def Write_addr(self,addr,object,Type = 'float'):
         """ Allows to write a value to a modbus API with IP address 192.168.0.90 
         ## Pameters:
         - addr:  the address of the infomation you want to write
         - object: the type of data you want to be stored at this address
+        - Type: ( default : 'float' ) the type of data stored at this address: 
+            - you can specify float, string, bool, 16 uint or 8int
         """
         # --------------------------------------------------------------------------- #
         # écriture
         # --------------------------------------------------------------------------- #
         builder = BinaryPayloadBuilder(endian = Endian.Big)
-        builder.add_32bit_float(object)
+        if Type == 'float':
+            builder.add_32bit_float(object)
+        elif Type == 'string':
+            builder.add_string(object)
+        elif Type == 'bool':
+            decimales = addr%int(addr)
+            b = int(addr)
+            print (b)
+            if decimales == 0:
+                towrite = [object,self.Read_addr(b+0.05,"bool",False),self.Read_addr(b+0.1,"bool",False),self.Read_addr(b+0.15,"bool",False),self.Read_addr(b+0.2,"bool",False),self.Read_addr(b+0.25,"bool",False),self.Read_addr(b+0.3,"bool",False),self.Read_addr(b+0.4,"bool",False)]
+                builder.add_bits(towrite)
+            elif 0.51>decimales and decimales>0.049:
+                towrite = [self.Read_addr(b,"bool",False),object,self.Read_addr(b+0.1,"bool",False),self.Read_addr(b+0.15,"bool",False),self.Read_addr(b+0.2,"bool",False),self.Read_addr(b+0.25,"bool",False),self.Read_addr(b+0.3,"bool",False),self.Read_addr(b+0.4,"bool",False)]
+                builder.add_bits(towrite)
+            elif 0.11>decimales and decimales>0.099:
+                towrite = [self.Read_addr(b,"bool",False),self.Read_addr(b+0.05,"bool",False),object,self.Read_addr(b+0.15,"bool",False),self.Read_addr(b+0.2,"bool",False),self.Read_addr(b+0.25,"bool",False),self.Read_addr(b+0.3,"bool",False),self.Read_addr(b+0.4,"bool",False)]                
+                builder.add_bits(towrite)
+        elif Type == '16uint':
+            b = addr%int(addr)
+            if b == 0:
+                builder.add_16bit_uint(object)
+            elif 0.51>b and b>0.049:
+                builder.add_16bit_uint(object)            
+        elif Type == '8int':
+            builder.add_8bit_uint(object)
+
         payload = builder.build()
         # print (f"TEEEEEST {payload}\n")
-        self.client.write_registers(addr,payload,skip_encode=True)
+        if Type != 'bool':
+            self.client.write_registers(addr,payload,skip_encode=True)
+        else :
+            self.client.write_registers(b,payload,skip_encode=True)
         log.info (Fore.RED + f"writing {object} in {addr}"+ Fore.RESET)
         
   

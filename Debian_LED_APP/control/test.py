@@ -8,10 +8,15 @@ from time import sleep
 
 Myclient = OperaMetrix_ModbusTCP_client()
 Myclient.connect()
-testa = 101
-Myclient.Read_addr(testa)
+testa = 113
+typeaddr = "bool"
+a = Myclient.Read_addr(testa,typeaddr)
 sleep(1)
-Myclient.Write_addr(testa,2.5)
+Myclient.Write_addr(testa,True,typeaddr)
 sleep(1)
-Myclient.Read_addr(testa)
+Myclient.Read_addr(testa,typeaddr)
+# sleep(1)
+# Myclient.Write_addr(testa,a)
+# sleep(1)
+# Myclient.Read_addr(testa)
 Myclient.close()

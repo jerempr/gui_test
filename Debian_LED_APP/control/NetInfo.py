@@ -21,6 +21,7 @@ if eth == '':
         eth = 'Not connected to Ethernet'
 
 
+
 class Netinfo(QThread):
     SystemSignal = Signal(str,str)
     def __init__(self):
@@ -28,7 +29,6 @@ class Netinfo(QThread):
 
      
     def run(self):
-        # Ethernet = str(eth)
         Ethernet = str(eth)
         Wifi = str(wifi)
         self.sleep(1)

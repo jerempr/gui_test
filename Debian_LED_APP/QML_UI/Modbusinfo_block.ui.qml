@@ -2,16 +2,16 @@ import QtQuick 2.8
 
 Item {
     id: modbusinfoblock
-        width: 200
-        height: 100
+    width: 300
+    height: 200
 
     property alias ihmSeuilNTBText: ihmSeuilNTB.text
 
     Rectangle{
         x: 0
         y: 0
-        width: 200
-        height: 100
+        width: 300
+        height: 200
         color: "yellow"
     }
 
@@ -28,6 +28,7 @@ Item {
     }
 
     Text {
+        console.log("\n ça marche");
         id: ihmSeuilNTB
         x: 5
         y: 87

@@ -1,9 +1,8 @@
 ## Importations
 import sys
-import os
 from ModBus_Communication import OperaMetrix_ModbusTCP_client
 from time import sleep
-
+from logger import *
 
 try:
         from PySide2.QtCore import *
@@ -31,5 +30,7 @@ class Modbusinfo(QThread):
 
      
     def run(self):
+        IhmSeuilNTB_var = str(IhmSeuilNTB)
         self.sleep(1)
-        self.SystemSignal.emit(str(IhmSeuilNTB))
+        log.debug(f"Variable modbus envoyée : {IhmSeuilNTB_var}")
+        self.SystemSignal.emit(IhmSeuilNTB_var)
