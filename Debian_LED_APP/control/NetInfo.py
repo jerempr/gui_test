@@ -30,7 +30,7 @@ class Netinfo(QThread):
      
     def run(self):
         # Ethernet = str(eth)
-        Ethernet = "TEEST"
+        Ethernet = str(eth)
         Wifi = str(wifi)
         self.sleep(1)
         self.SystemSignal.emit(Ethernet,Wifi)

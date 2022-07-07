@@ -1,5 +1,9 @@
-// import library
+// import librarys
+import QtQuick 2.8
 import QtQuick.Controls 2.1
+import QtQuick.Layouts 1.11
+// import QtQuick.Studio.Components 1.0
+// import QtQuick.Studio.Effects 1.0
 import "../backend/" as Data 
  
 // properties of the application window containing UI elements
@@ -24,8 +28,8 @@ ApplicationWindow {
         id: netinfoblock
         x: 10
         y: 10
-        n_aText: Data.NetworkValues.displaywifi()
-        gadgetText: Data.NetworkValues.displayethernet()
+        n_aText: Data.NetworkValues.displaywifi
+        gadgetText: Data.NetworkValues.displayethernet
     }
 
     Menu_block {
