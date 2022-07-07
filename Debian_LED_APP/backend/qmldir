@@ -1,1 +1,2 @@
 singleton NetworkValues 1.0 NetworkValues.qml
+singleton ModbusValues 1.0 ModbusValues.qml

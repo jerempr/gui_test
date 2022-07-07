@@ -12,7 +12,7 @@ ApplicationWindow {
     width: 1280 
     height: 720 
     visible: true
-    visibility: "FullScreen"
+    // visibility: "FullScreen"
  
     // initialize the first window of the application
     property var iniITEM: "P1_Led.ui.qml"

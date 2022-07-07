@@ -15,7 +15,7 @@ Item {
         height: 25
         color: "white"
         text: "N/A"
-        font.pixelSize: 24
+        font.pixelSize: 15
         horizontalAlignment: Text.AlignLeft
     }
 
@@ -27,7 +27,7 @@ Item {
         height: 25
         color: "#000000"
         text: "Wi-Fi Connection:"
-        font.pixelSize: 24
+        font.pixelSize: 15
         horizontalAlignment: Text.AlignLeft
     }
 
@@ -39,7 +39,7 @@ Item {
         height: 25
         color: "white"
         text: "N/A"
-        font.pixelSize: 24
+        font.pixelSize: 15
         horizontalAlignment: Text.AlignLeft
     }
 
@@ -51,7 +51,7 @@ Item {
         height: 25
         color: "#000000"
         text: "Ethernet Connection:"
-        font.pixelSize: 24
+        font.pixelSize: 15
         horizontalAlignment: Text.AlignLeft
     }
 }

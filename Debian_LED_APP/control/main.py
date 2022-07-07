@@ -11,6 +11,7 @@ print("this app use pyside2")
 
 from ledControl import Setting
 from NetInfo import Netinfo
+from ModbusInfo import Modbusinfo
  
 # launch the app
 if __name__ == '__main__':
@@ -22,12 +23,15 @@ if __name__ == '__main__':
     
     seting = Setting()
     netinfo = Netinfo()
+    modinfo = Modbusinfo()
 
     
     context.setContextProperty("_Setting", seting)
     context.setContextProperty("_Netinfo", netinfo)
+    context.setContextProperty("_Modbusinfo", modinfo)
     
     netinfo.start()
+    modinfo.start()
     
     engine.load(url)
     app.exec_()

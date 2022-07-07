@@ -1,6 +1,5 @@
 import sys
 import os
-import subprocess
 
 try:
         from PySide2.QtCore import *
@@ -9,7 +8,7 @@ except ImportError:
 if 'PyQt5' in sys.modules:
         from PyQt5.QtCore import pyqtSignal as Signal
 else:
-        from PySide2.QtCore import Signal, Slot
+        from PySide2.QtCore import Signal
 
 
 eth = os.popen('ip addr show eth0 | grep "\<inet\>" | awk \'{ print $2 }\' | awk -F "/" \'{ print $1 }\'').read().strip()

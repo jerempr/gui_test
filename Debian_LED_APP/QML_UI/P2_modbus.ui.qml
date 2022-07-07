@@ -41,10 +41,17 @@ Item {
 
     Rectangle{
         id: modbusrecttest
-        x: 270
+        x: 670
         y: 270
         width: 200
         height: 100
         color: "yellow"
+    }
+    
+    Modbusinfo_block{
+        id: modbusinfoblock
+        x: 270
+        y: 270
+        ihmSeuilNTBText: Data.ModbusValues.displayIhmSeuilNTB
     }
 }

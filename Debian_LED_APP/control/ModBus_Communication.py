@@ -67,7 +67,7 @@ class OperaMetrix_ModbusTCP_client():
             value = decoder.decode_16bit_uint()
         elif Type == '8int':
             value = decoder.decode_8bit_int()
-        log.debug (Fore.RED + f"Here is the response: {value}" + Fore.RESET)
+        log.info (Fore.RED + f"Here is the response: {value}" + Fore.RESET)
         # --------------------------------------------------------------------------- #
         # Close client
         # --------------------------------------------------------------------------- #
@@ -142,9 +142,11 @@ class OperaMetrix_ModbusTCP_client():
         payload = builder.build()
         # print (f"TEEEEEST {payload}\n")
         self.client.write_registers(addr,payload,skip_encode=True)
-        log.debug (Fore.RED + f"writing {object} in {addr}"+ Fore.RESET)
+        log.info (Fore.RED + f"writing {object} in {addr}"+ Fore.RESET)
         
   
+
+
 
 # while (1):
 #     addr = int(input("\nEntrer l'adresse de lecture: "))
