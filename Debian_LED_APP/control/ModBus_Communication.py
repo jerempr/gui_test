@@ -4,7 +4,6 @@ from pymodbus3.constants import Endian
 from pymodbus3.payload import BinaryPayloadDecoder, BinaryPayloadBuilder
 from logger import *
 from colorama import Fore
-from time import sleep
 
 
 # import logging

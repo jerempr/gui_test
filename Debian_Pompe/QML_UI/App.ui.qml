@@ -24,8 +24,8 @@ ApplicationWindow {
     //     id: netinfoblock
     //     x: 10
     //     y: 10
-    //     n_aText: Data.NetworkValues.displaywifi
-    //     gadgetText: Data.NetworkValues.displayethernet
+    //     n_aText: Data.Values.displaywifi
+    //     gadgetText: Data.Values.displayethernet
     // }
 
     Menu_block {
