@@ -21,7 +21,8 @@ else:
 
 from NetInfo import Netinfo
 from System import Setting
-# from ModbusInfo import Modbusinfo
+from ModbusInfo import Modbusinfo
+from SysInfo import Sysinfo
  
 # launch the app
 if __name__ == '__main__':
@@ -34,15 +35,19 @@ if __name__ == '__main__':
     
     seting = Setting()
     netinfo = Netinfo()
-    # modinfo = Modbusinfo()
+    modinfo = Modbusinfo()
+    sysinfo = Sysinfo()
+
 
     
     context.setContextProperty("_Setting", seting)
     context.setContextProperty("_Netinfo", netinfo)
-    # context.setContextProperty("_Modbusinfo", modinfo)
+    context.setContextProperty("_Modbusinfo", modinfo)
+    context.setContextProperty("_Sysinfo", sysinfo)
     
     netinfo.start()
-    # modinfo.start()
+    modinfo.start()
+    sysinfo.start()
     
     engine.load(url)
     app.exec_()

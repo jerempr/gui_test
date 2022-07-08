@@ -7,22 +7,23 @@ Item {
     property alias n_aText: n_a.text
     property alias gadgetText: gadget.text
 
+
+    // On affiche le wifi et ethernet
     Text {
         id: n_a
         x: 0
-        y: 20
+        y: 50
         width: 160
         height: 15
-        color: "white"
+        color: "black"
         text: "N/A"
-        
         horizontalAlignment: Text.AlignLeft
     }
 
     Text {
         id: wi_fi_conection
         x: 0
-        y: 0
+        y: 30
         width: 160
         height: 15
         color: "#000000"
@@ -34,10 +35,10 @@ Item {
     Text {
         id: gadget
         x: 0
-        y: 60
+        y: 90
         width: 160
         height: 15
-        color: "white"
+        color: "black"
         text: "N/A"
         
         horizontalAlignment: Text.AlignLeft
@@ -46,7 +47,7 @@ Item {
     Text {
         id: ethernet_connection
         x: 0
-        y: 40
+        y: 70
         width: 160
         height: 15
         color: "#000000"

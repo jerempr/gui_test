@@ -70,18 +70,25 @@ Item {
         }
     }
 
-    Text {
+    // Text {
+    //     x: 960
+    //     y: 8
+    //     width: 40
+    //     height: 333
+    //     text: "Print Datetime"
+    // }
+
+    Datetimeinfo_block {
+        id: datetimeinfoblock
         x: 960
         y: 8
-        width: 40
-        height: 333
-        text: "Print Datetime"
+        datetimeText: Data.Values.displaydatetime
     }
 
     Networkinfo_block {
         id: netinfoblock
         x: 960
-        y: 50
+        y: 8
         n_aText: Data.Values.displaywifi
         gadgetText: Data.Values.displayethernet
     }
