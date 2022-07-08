@@ -11,7 +11,7 @@ ApplicationWindow {
     visibility: "FullScreen"
  
     // initialize the first window of the application
-    property var iniITEM: "P1.qml"
+    property var iniITEM: "P1.ui.qml"
  
     // stack-based navigation model
     StackView {
@@ -27,14 +27,6 @@ ApplicationWindow {
     //     n_aText: Data.Values.displaywifi
     //     gadgetText: Data.Values.displayethernet
     // }
-
-    Menu_block {
-        id: menublock
-        x: 0
-        y: 0
-    }
-
-    }
     
     // close button
     Button {
