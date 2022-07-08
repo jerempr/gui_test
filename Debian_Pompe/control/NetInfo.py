@@ -34,5 +34,10 @@ class Netinfo(QThread):
      
     def run(self):
         Ethernet , Wifi = Get_networksituation()
-        self.sleep(0.1)
+        self.sleep(3)
         self.SystemSignal.emit(Ethernet,Wifi)
+        while(1):
+                Ethernet , Wifi = Get_networksituation()
+                self.sleep(3)
+                self.SystemSignal.emit(Ethernet,Wifi)
+                self.sleep(5*60)
