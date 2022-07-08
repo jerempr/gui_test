@@ -28,7 +28,7 @@ Item {
         x: 150
         y: 10
         text: "Débits"
-        font.pixelSize: 30
+        font.pixelSize: 15
     }
 
 }

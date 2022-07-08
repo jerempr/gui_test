@@ -9,49 +9,49 @@ Item {
 
     Text {
         id: n_a
-        x: 5
-        y: 32
+        x: 0
+        y: 20
         width: 160
-        height: 25
+        height: 15
         color: "white"
         text: "N/A"
-        font.pixelSize: 24
+        
         horizontalAlignment: Text.AlignLeft
     }
 
     Text {
         id: wi_fi_conection
-        x: 5
-        y: 5
+        x: 0
+        y: 0
         width: 160
-        height: 25
+        height: 15
         color: "#000000"
         text: "Wi-Fi Connection:"
-        font.pixelSize: 24
+        
         horizontalAlignment: Text.AlignLeft
     }
 
     Text {
         id: gadget
-        x: 5
-        y: 87
+        x: 0
+        y: 60
         width: 160
-        height: 25
+        height: 15
         color: "white"
         text: "N/A"
-        font.pixelSize: 24
+        
         horizontalAlignment: Text.AlignLeft
     }
 
     Text {
         id: ethernet_connection
-        x: 5
-        y: 60
+        x: 0
+        y: 40
         width: 160
-        height: 25
+        height: 15
         color: "#000000"
         text: "Ethernet Connection:"
-        font.pixelSize: 24
+        
         horizontalAlignment: Text.AlignLeft
     }
 }

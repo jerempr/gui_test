@@ -19,6 +19,11 @@ ApplicationWindow {
         initialItem: iniITEM
     }
     
+
+    Menu_block {
+        x: 0
+        y: 0
+    }
     //  // Print IP and Eth
     // Networkinfo_block {
     //     id: netinfoblock
@@ -31,7 +36,7 @@ ApplicationWindow {
     // close button
     Button {
         id: close
-        x: 0
+        x: 1200
         y: 0
         width: 80
         height: 31

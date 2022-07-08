@@ -25,10 +25,10 @@ Item {
 
     Text {
         id: textvolumes
-        x: 150
+        x: 100
         y: 10
         text: "Temps de fonctionnement"
-        font.pixelSize: 30
+        font.pixelSize: 15
     }
 
 }
