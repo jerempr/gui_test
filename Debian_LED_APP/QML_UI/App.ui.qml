@@ -4,7 +4,7 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.11
 // import QtQuick.Studio.Components 1.0
 // import QtQuick.Studio.Effects 1.0
-import "../backend/" as Data 
+import "../backend" as Data 
  
 // properties of the application window containing UI elements
 ApplicationWindow {
@@ -23,14 +23,23 @@ ApplicationWindow {
         initialItem: iniITEM
     }
     
-     // Print IP and Eth
+    // Print IP and Eth
     Networkinfo_block {
         id: netinfoblock
         x: 10
         y: 10
-        n_aText: Data.NetworkValues.displaywifi
-        gadgetText: Data.NetworkValues.displayethernet
+        n_aText: Data.Values.displaywifi
+        gadgetText: Data.Values.displayethernet
     }
+
+    // Modbusinfo_block{
+    //     id: modbusinfoblock
+    //     x: 270
+    //     y: 270
+    //     ihmSeuilNTBText: Data.Values.displayIhmSeuilNTB
+    // }
+
+
 
     Menu_block {
         id: menublock
@@ -53,4 +62,5 @@ ApplicationWindow {
             _Setting.closeWindow()
         }
     }
+
 }

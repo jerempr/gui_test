@@ -8,4 +8,4 @@ FORMAT = (
 )
 logging.basicConfig(format=FORMAT)
 log = logging.getLogger()
-log.setLevel(logging.INFO)
+log.setLevel(logging.DEBUG)

@@ -43,6 +43,6 @@ class Setting(QObject):
     # close
     @Slot()
     def closeWindow(self):
-        os.system("rm /home/pi/gui/gui_test/Debian_LED_APP/QML_UI/*qmlc")
+        os.system("rm /home/pi/gui/gui_test/Debian_LED_APP/*/*.qmlc")
         sys.exit()
 

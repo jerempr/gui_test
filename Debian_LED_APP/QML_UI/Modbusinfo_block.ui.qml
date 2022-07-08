@@ -13,6 +13,7 @@ Item {
         width: 300
         height: 200
         color: "yellow"
+        radius: 10
     }
 
     Text {
@@ -28,7 +29,6 @@ Item {
     }
 
     Text {
-        console.log("\n ça marche");
         id: ihmSeuilNTB
         x: 5
         y: 87

@@ -12,6 +12,6 @@ export QT_QPA_EGLFS_PHYSICAL_HEIGHT=720
 cd /home/pi/gui/gui_test/Debian_LED_APP/control
 echo "qt demo start..."
 # python3 main.py
-python3 main.py>/home/pi/gui/gui_test/Guilogs 2>&1
+python3 main.py>/home/pi/gui/gui_test/Debian_LED_APP/Guilogs 2>&1
 echo "qt demo closed ok!"
 

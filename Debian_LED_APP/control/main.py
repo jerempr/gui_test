@@ -19,6 +19,7 @@ if __name__ == '__main__':
     engine = QQmlApplicationEngine()
     # location of the fullscreen app that we created before
     url = QUrl("../QML_UI/App.ui.qml")
+    
     context = engine.rootContext()
     
     seting = Setting()

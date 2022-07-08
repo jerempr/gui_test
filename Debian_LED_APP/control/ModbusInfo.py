@@ -15,12 +15,14 @@ else:
 
 
 
-# script searching the modbus values
-Myclient = OperaMetrix_ModbusTCP_client()
-Myclient.connect()
-IhmSeuilNTB = Myclient.Read_addr(101)
-sleep(1)
-Myclient.close()
+# # script searching the modbus values
+# Myclient = OperaMetrix_ModbusTCP_client()
+# Myclient.connect()
+# IhmSeuilNTB = Myclient.Read_addr(101)
+# sleep(1)
+# Myclient.close()
+
+IhmSeuilNTB = 2.5
 
 
 class Modbusinfo(QThread):
