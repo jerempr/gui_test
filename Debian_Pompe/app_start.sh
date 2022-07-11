@@ -4,6 +4,8 @@ modprobe lis331dlh-i2c
 echo "loading qt demo..."
 export QT_QPA_PLATFORM=eglfs
 #export QML_IMPORT_TRACE=1
+export QML_IMPORT_PATH="/usr/lib/aarch64-linux-gnu/qt5/qml/"
+export QML_PATH="/usr/lib/aarch64-linux-gnu/qt5/qml/"
 export QT_QPA_EGLFS_ALWAYS_SET_MODE=1
 export QT_QPA_EGLFS_PHYSICAL_WIDTH=1280
 export QT_QPA_EGLFS_PHYSICAL_HEIGHT=720
@@ -12,7 +14,7 @@ export QT_QPA_EGLFS_PHYSICAL_HEIGHT=720
 # export QT_IM_MODULE="qtvirtualkeyboard"
 export QT_XCB_GL_INTEGRATION="xcb_egl" 
 export QT_WAYLAND_CLIENT_BUFFER_INTEGRATION="xcomposite-egl "
-export QT_IM_MODULE="qtvirtualkeyboard ./pure-qml -platform xcb"
+export QT_IM_MODULE="qtvirtualkeyboard"
 
 # in order to not show the warning message:
 # export XDG_RUNTIME_DIR='/var/volatile/tmp/runtime-root'

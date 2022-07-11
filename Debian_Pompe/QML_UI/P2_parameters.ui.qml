@@ -6,9 +6,11 @@ import "../backend/" as Data
 
 // Gestion clavier:
 // import QtQuick.VirtualKeyboard 2.8
-import QtQuick.VirtualKeyboard 2.15
+import QtQuick.VirtualKeyboard 2.1
 // import QtQuick.VirtualKeyboard.Styles 2.15
 // import QtQuick.VirtualKeyboard.Settings 2.15
+ 
+
  
 /* The Item type is the base type for all visual items in Qt Quick. Here 1280 and 720 are chosen 
 for the dimensions because the resolution of reTerminal LCD is 1280x720 */

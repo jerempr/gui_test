@@ -28,14 +28,19 @@ class Modbusinfo(QThread):
 
      
     def run(self):
-        while(True):
-                # self.IhmSeuilNTB = self.Myclient.Read_addr(101)
-                # self.IhmSeuilNTB = 2.5
-                IhmSeuilNTB_var = str(round(self.IhmSeuilNTB,2))
-                self.sleep(1)
-                log.debug(f"Variable modbus envoyée : {IhmSeuilNTB_var}")
-                self.SystemSignal.emit(IhmSeuilNTB_var)
-                sleep(1)
+        # while(True):
+        #         self.IhmSeuilNTB = self.Myclient.Read_addr(101)
+        #         IhmSeuilNTB_var = str(round(self.IhmSeuilNTB,2))
+        #         self.sleep(1)
+        #         log.debug(f"Variable modbus envoyée : {IhmSeuilNTB_var}")
+        #         self.SystemSignal.emit(IhmSeuilNTB_var)
+        #         sleep(1)
+        self.IhmSeuilNTB = 2.5
+        IhmSeuilNTB_var = str(round(self.IhmSeuilNTB,2))
+        self.sleep(1)
+        log.debug(f"Variable modbus envoyée : {IhmSeuilNTB_var}")
+        self.SystemSignal.emit(IhmSeuilNTB_var)
+        sleep(1)
         
     @Slot(float)
     def Write_modbus_value(self,obj,type = "float"):

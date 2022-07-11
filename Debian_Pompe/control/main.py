@@ -24,6 +24,9 @@ from System import Setting
 from ModbusInfo import Modbusinfo
 from SysInfo import Sysinfo
  
+
+
+
 # launch the app
 if __name__ == '__main__':
     app = QApplication([])
