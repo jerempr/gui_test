@@ -17,6 +17,7 @@ ApplicationWindow {
     StackView {
         id: stackview
         initialItem: iniITEM
+        // parameters_button.enabled = false
     }
     
 

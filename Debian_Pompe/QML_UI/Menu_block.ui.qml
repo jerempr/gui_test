@@ -8,6 +8,9 @@ Item {
     width: 1280
     height: 100
 
+    property int page: 1 
+
+
     Rectangle {
         id: uselessrectangle
         x: 333
@@ -35,6 +38,7 @@ Item {
     }
 
     Image {
+        id: parameters_button
         source: "../images/parameters.png"
         x: 175
         y: 10
@@ -43,10 +47,21 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                // stackview.pop()
-                // stackview.push("P2_parameters.ui.qml",StackView.Immediate)
-                // home_button.enabled = true
-                console.info("image parameters clicked!")
+                if (menublock.page == 1 ){
+                    stackview.pop()
+                    stackview.push("P2_parameters.ui.qml",StackView.Immediate)
+                    menublock.page = 2
+                    console.info("image parameters clicked!")
+                    console.info("push to page 2")
+                }
+                else{
+                    stackview.pop()
+                    stackview.push("P1.ui.qml",StackView.Immediate)
+                    menublock.page = 1
+                    console.info("image parameters clicked!")
+                    console.info("push to page 1")
+                }
+
             }
         }
     }

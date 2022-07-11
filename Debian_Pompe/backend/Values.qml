@@ -35,7 +35,7 @@ QtObject {
     function modbusinfofunc(strobj) {
         console.log("ça marche 3");
         console.log("Voila le modbus objet reçu: ",String(strobj));
-        networkvalues.displayIhmSeuilNTB = String(strobj)
+        displayIhmSeuilNTB = String(strobj)
     }
 }
 
