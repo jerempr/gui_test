@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.11
 import "../backend/" as Data
 
 // Gestion clavier:
-import QtQuick.VirtualKeyboard 2.15
+// import QtQuick.VirtualKeyboard 2.15
 // import "../imports/VirtualKeyboard" 2.15
 // import "../imports/VirtualKeyboard/Settings"
 // import "../imports/VirtualKeyboard/Styles"
@@ -52,12 +52,12 @@ Item {
         horizontalAlignment: Text.AlignCenter
     }
     
-    InputPanel {
-        id:inputPanel
-        y: Qt.inputMethod.visible ? parent.height - inputPanel.height : parent.height
-        anchors.left: parent.left
-        anchors.right: parent.right
-    }
+    // InputPanel {
+    //     id:inputPanel
+    //     y: Qt.inputMethod.visible ? parent.height - inputPanel.height : parent.height
+    //     anchors.left: parent.left
+    //     anchors.right: parent.right
+    // }
 
 
     TextField{
@@ -70,7 +70,7 @@ Item {
         focus: true 
         // color: "black"
         onEditingFinished:{
-            _Modbusinfo.Write_modbus_value(txt_ihmsntb.text)
+            _Modbusinfo.Write_modbus_float(101,txt_ihmsntb.text)
             console.info("Written: ",txt_ihmsntb.text)
         }
     }

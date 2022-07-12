@@ -42,7 +42,15 @@ class Modbusinfo(QThread):
         self.SystemSignal.emit(IhmSeuilNTB_var)
         sleep(1)
         
-    @Slot(float,str)
-    def Write_modbus_value(self,obj,type = "float"):
-        log.debug(f"Variable écrite à envoyer en modbus: {obj}")
-        # self.Myclient.Write_addr(101,float(obj),type)
+    @Slot(float,float)
+    def Write_modbus_float(self,addr,obj):
+        log.debug(f"Variable de type float écrite à l'adresse {addr} par modbus: {obj}")
+        # self.Myclient.Write_addr(addr,float(obj),type)
+
+    @Slot(float,bool)
+    def Write_modbus_boolean(self,addr, obj):
+        # log.debug(f"received object: {obj}")
+        # obj = bool(obj)
+        log.debug(f"Variable de type boolean écrite à l'adresse {addr} par modbus: {obj}")
+        # self.Myclient.Write_addr(addr,float(obj),type)
+
