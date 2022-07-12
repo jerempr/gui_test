@@ -6,7 +6,7 @@ import "../backend/" as Data
 
 // Gestion clavier:
 // import QtQuick.VirtualKeyboard 2.8
-import QtQuick.VirtualKeyboard 2.1
+import "/usr/lib/aarch64-linux-gnu/qt5/qml/QtQuick/VirtualKeyboard" 2.1
 // import QtQuick.VirtualKeyboard.Styles 2.15
 // import QtQuick.VirtualKeyboard.Settings 2.15
  

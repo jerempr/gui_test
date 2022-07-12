@@ -18,7 +18,7 @@ def Get_networksituation():
         if wifi == '':
                 wifi = 'Not connected to WiFi'
 
-        if eth == '':
+        if eth == '' or str(eth) == '192.168.0.200':
                 eth = 'Not connected to Ethernet'
         return str(eth),str(wifi)
 

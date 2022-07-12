@@ -42,7 +42,7 @@ class Modbusinfo(QThread):
         self.SystemSignal.emit(IhmSeuilNTB_var)
         sleep(1)
         
-    @Slot(float)
+    @Slot(float,str)
     def Write_modbus_value(self,obj,type = "float"):
         log.debug(f"Variable écrite à envoyer en modbus: {obj}")
         # self.Myclient.Write_addr(101,float(obj),type)
