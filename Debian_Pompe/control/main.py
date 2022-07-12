@@ -1,5 +1,6 @@
 # import libraries
 import sys
+import os
 
 
 
@@ -31,18 +32,22 @@ from SysInfo import Sysinfo
 if __name__ == '__main__':
     app = QApplication([])
     engine = QQmlApplicationEngine()
+    engine.addImportPath("../imports")
+    os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard"
+
     # location of the fullscreen app that we created before
     url = QUrl("../QML_UI/App.ui.qml")
     
     context = engine.rootContext()
     
+    # Récup-re les classes créées dans les dépendances:
     seting = Setting()
     netinfo = Netinfo()
     modinfo = Modbusinfo()
     sysinfo = Sysinfo()
 
 
-    
+    # Rends les composants utilisables pour les .qml
     context.setContextProperty("_Setting", seting)
     context.setContextProperty("_Netinfo", netinfo)
     context.setContextProperty("_Modbusinfo", modinfo)

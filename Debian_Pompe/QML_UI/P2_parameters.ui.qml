@@ -5,8 +5,10 @@ import QtQuick.Layouts 1.11
 import "../backend/" as Data
 
 // Gestion clavier:
-// import QtQuick.VirtualKeyboard 2.8
-import "/usr/lib/aarch64-linux-gnu/qt5/qml/QtQuick/VirtualKeyboard" 2.1
+import QtQuick.VirtualKeyboard 2.15
+// import "../imports/VirtualKeyboard" 2.15
+// import "../imports/VirtualKeyboard/Settings"
+// import "../imports/VirtualKeyboard/Styles"
 // import QtQuick.VirtualKeyboard.Styles 2.15
 // import QtQuick.VirtualKeyboard.Settings 2.15
  
@@ -49,6 +51,14 @@ Item {
         font.pixelSize: 20
         horizontalAlignment: Text.AlignCenter
     }
+    
+    InputPanel {
+        id:inputPanel
+        y: Qt.inputMethod.visible ? parent.height - inputPanel.height : parent.height
+        anchors.left: parent.left
+        anchors.right: parent.right
+    }
+
 
     TextField{
         id: txt_ihmsntb
