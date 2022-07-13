@@ -6,6 +6,8 @@ Item {
     height: 120
     property alias n_aText: n_a.text
     property alias gadgetText: gadget.text
+    
+    property int taille_texte: 15
 
 
     // On affiche le wifi et ethernet
@@ -17,6 +19,7 @@ Item {
         height: 15
         color: "black"
         text: "N/A"
+        font.pixelSize: taille_texte
         horizontalAlignment: Text.AlignLeft
     }
 
@@ -28,7 +31,7 @@ Item {
         height: 15
         color: "#000000"
         text: "Wi-Fi Connection:"
-        
+        font.pixelSize: taille_texte
         horizontalAlignment: Text.AlignLeft
     }
 
@@ -40,7 +43,7 @@ Item {
         height: 15
         color: "black"
         text: "N/A"
-        
+        font.pixelSize: taille_texte
         horizontalAlignment: Text.AlignLeft
     }
 
@@ -52,7 +55,7 @@ Item {
         height: 15
         color: "#000000"
         text: "Ethernet Connection:"
-        
+        font.pixelSize: taille_texte
         horizontalAlignment: Text.AlignLeft
     }
 }

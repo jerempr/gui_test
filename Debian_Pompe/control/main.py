@@ -35,6 +35,9 @@ if __name__ == '__main__':
     engine.addImportPath("../imports")
     os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard"
 
+    # Hide the mouse:
+    app.setCursorVisible(False);
+
     # location of the fullscreen app that we created before
     url = QUrl("../QML_UI/App.ui.qml")
     

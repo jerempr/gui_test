@@ -20,8 +20,15 @@ Item {
         y: 0
         width: 400
         height: 225
-        Text: "Nombre de démarrages"
         color: "#ebebeb"
+    }
+
+    Text {
+        id: textvolumes
+        x: 100
+        y: 10
+        text: "Nombre de démarrages"
+        font.pixelSize: 15
     }
 
 }

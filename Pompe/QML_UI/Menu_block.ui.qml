@@ -1,61 +1,137 @@
 import QtQuick 2.8
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.11
+import "../backend/" as Data 
 
 Item {
     id: menublock
     width: 1280
     height: 100
 
+    property int page: 1 
+
+
     Rectangle {
-        id: uselessrectangle
         x: 333
         y: 0
         width: 600
         height: 44
         color: "#ebebeb"
+        Text{
+            anchors.fill: parent
+            text: Data.Values.displaydefautelec
+            color: "red"
+            font.pixelSize: 14
+            horizontalAlignment: Text.AlignCenter
+            verticalAlignment: Text.AlignVCenter
+        }
     }
 
-    Button {
-        id: sta_parameters
+    Image {
+        source: "../images/logo.png"
+        x: 20
+        y: 10
+        width: 85
+        height: 85
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if (menublock.page != 4 ){
+                    stackview.pop()
+                    stackview.push("P4_sysparams.ui.qml",StackView.Immediate)
+                    menublock.page = 4
+                    console.info("image OperaMetrix clicked!")
+                    console.info("push to page 4")
+                }
+                else{
+                    stackview.pop()
+                    stackview.push("P1.ui.qml",StackView.Immediate)
+                    menublock.page = 1
+                    console.info("image OperaMetrix clicked!")
+                    console.info("push to page 1")
+                }
+            }
+        }
+    }
+
+    Image {
+        id: parameters_button
+        source: "../images/parameters.png"
         x: 175
         y: 10
-        // width: 70
-        // height: 70
-        iconSource: "../images/parameters.png"
-        checkable: true
-        checked: true
-        Layout.minimumWidth: 70
-        Layout.minimumHeight: 70
-        onClicked:{
-            stackview.pop()
-            stackview.push("P2_parameters.ui.qml",StackView.Immediate)
-            home_button.enabled = true
+        width: 70
+        height: 70
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if (menublock.page != 2 ){
+                    stackview.pop()
+                    stackview.push("P2_parameters.ui.qml",StackView.Immediate)
+                    menublock.page = 2
+                    console.info("image parameters clicked!")
+                    console.info("push to page 2")
+                }
+                else{
+                    stackview.pop()
+                    stackview.push("P1.ui.qml",StackView.Immediate)
+                    menublock.page = 1
+                    console.info("image parameters clicked!")
+                    console.info("push to page 1")
+                }
+            }
         }
     }
-    Button {
-        id: warning_button
+
+    
+    Image {
+        source: "../images/warning.png"
         x: 270
         y: 40
-        // width: 45
-        // height: 45
-        iconSource: "../images/warning.png"
-        checkable: true
-        checked: true
-        Layout.minimumWidth: 45
-        Layout.minimumHeight: 45
-        onClicked:{
-            stackview.pop()
-            // TODO
-            //stackview.push("P2_modbus.ui.qml",StackView.Immediate)
-            modbuspage_button.enabled = true
+        width: 45
+        height: 45
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if (menublock.page != 3 ){
+                    stackview.pop()
+                    stackview.push("P3_warnings.ui.qml",StackView.Immediate)
+                    menublock.page = 3
+                    console.info("image warnings clicked!")
+                    console.info("push to page 3")
+                }
+                else{
+                    stackview.pop()
+                    stackview.push("P1.ui.qml",StackView.Immediate)
+                    menublock.page = 1
+                    console.info("image warnings clicked!")
+                    console.info("push to page 1")
+                }
+            }
         }
     }
-    Text {
-        x: 940
+
+    // Text {
+    //     x: 960
+    //     y: 8
+    //     width: 40
+    //     height: 333
+    //     text: "Print Datetime"
+    // }
+
+    Datetimeinfo_block {
+        id: datetimeinfoblock
+        x: 960
         y: 8
-        width: 40
-        height: 333
-        text: "Print Datetime"
+        datetimeText: Data.Values.displaydatetime
     }
+
+    Networkinfo_block {
+        id: netinfoblock
+        x: 960
+        y: 8
+        n_aText: Data.Values.displaywifi
+        gadgetText: Data.Values.displayethernet
+    }
+
+
 }

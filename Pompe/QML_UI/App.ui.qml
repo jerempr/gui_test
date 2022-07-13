@@ -11,35 +11,33 @@ ApplicationWindow {
     visibility: "FullScreen"
  
     // initialize the first window of the application
-    property var iniITEM: "P1.qml"
+    property var iniITEM: "P1.ui.qml"
  
     // stack-based navigation model
     StackView {
         id: stackview
         initialItem: iniITEM
+        // parameters_button.enabled = false
     }
     
+
+    Menu_block {
+        x: 0
+        y: 0
+    }
     //  // Print IP and Eth
     // Networkinfo_block {
     //     id: netinfoblock
     //     x: 10
     //     y: 10
-    //     n_aText: Data.NetworkValues.displaywifi
-    //     gadgetText: Data.NetworkValues.displayethernet
+    //     n_aText: Data.Values.displaywifi
+    //     gadgetText: Data.Values.displayethernet
     // }
-
-    Menu_block {
-        id: menublock
-        x: 0
-        y: 0
-    }
-
-    }
     
     // close button
     Button {
         id: close
-        x: 0
+        x: 1200
         y: 0
         width: 80
         height: 31

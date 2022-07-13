@@ -20,8 +20,15 @@ Item {
         y: 0
         width: 400
         height: 225
-        Text: "Volumes"
         color: "#ebebeb"
+    }
+
+    Text {
+        id: textvolumes
+        x: 150
+        y: 10
+        text: "Volumes"
+        font.pixelSize: 15
     }
 
 }
