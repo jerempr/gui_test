@@ -37,7 +37,7 @@ Item {
                     x: 0
                     y: 0
                     width: parent.width
-                    height: 250
+                    height: 500 - Data.Values.displayvaleur_niveau_cuve
                     // color: "#6bb3d7"
                     color: "#d1d1d1"
                 }
@@ -52,8 +52,21 @@ Item {
                         anchors.fill: parent
                         onClicked: {
                             console.info("image pump a clicked!")
-                            _Modbusinfo.Write_modbus_boolean(54.05,1)
+                            _Modbusinfo.Write_modbus_boolean(54,1)
                         }
+                    }
+                    Text {
+                        x: 50
+                        y: 120
+                        text: "Pompe 1"
+                    }
+                    Image {
+                        source: "../images/lightning.png"
+                        x: 0
+                        y: 0
+                        width: 50
+                        height: 60
+                        visible: (Data.Values.displaydefautelec.includes("pompe 1"))
                     }
                 }
                 Image {
@@ -66,12 +79,25 @@ Item {
                         anchors.fill: parent
                         onClicked: {
                             console.info("image pump b  clicked!")
-                            _Modbusinfo.Write_modbus_boolean(75.05,0)
+                            _Modbusinfo.Write_modbus_boolean(75,1)
                         }
                     }
+                    Text {
+                        x: 50
+                        y: 120
+                        text: "Pompe 2"
+                    }
+                    Image {
+                        source: "../images/lightning.png"
+                        x: 0
+                        y: 0
+                        width: 50
+                        height: 60
+                        visible: (Data.Values.displaydefautelec.includes("pompe 2"))
+                    }
+                    
                 }
         }
     }
-
 
 }

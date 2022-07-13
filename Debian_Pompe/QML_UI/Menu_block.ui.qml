@@ -12,12 +12,19 @@ Item {
 
 
     Rectangle {
-        id: uselessrectangle
         x: 333
         y: 0
         width: 600
         height: 44
         color: "#ebebeb"
+        Text{
+            anchors.fill: parent
+            text: Data.Values.displaydefautelec
+            color: "red"
+            font.pixelSize: 14
+            horizontalAlignment: Text.AlignCenter
+            verticalAlignment: Text.AlignVCenter
+        }
     }
 
     Image {
@@ -29,10 +36,20 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                // stackview.pop()
-                // stackview.push("P2_parameters.ui.qml",StackView.Immediate)
-                // home_button.enabled = true
-                console.info("image OperaMetrix logo clicked!")
+                if (menublock.page != 4 ){
+                    stackview.pop()
+                    stackview.push("P4_sysparams.ui.qml",StackView.Immediate)
+                    menublock.page = 4
+                    console.info("image OperaMetrix clicked!")
+                    console.info("push to page 4")
+                }
+                else{
+                    stackview.pop()
+                    stackview.push("P1.ui.qml",StackView.Immediate)
+                    menublock.page = 1
+                    console.info("image OperaMetrix clicked!")
+                    console.info("push to page 1")
+                }
             }
         }
     }
@@ -47,7 +64,7 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if (menublock.page == 1 ){
+                if (menublock.page != 2 ){
                     stackview.pop()
                     stackview.push("P2_parameters.ui.qml",StackView.Immediate)
                     menublock.page = 2
@@ -61,7 +78,6 @@ Item {
                     console.info("image parameters clicked!")
                     console.info("push to page 1")
                 }
-
             }
         }
     }
@@ -76,11 +92,20 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                // stackview.pop()
-                // // TODO
-                // //stackview.push("P2_modbus.ui.qml",StackView.Immediate)
-                // modbuspage_button.enabled = true
-                console.info("image warning clicked!")
+                if (menublock.page != 3 ){
+                    stackview.pop()
+                    stackview.push("P3_warnings.ui.qml",StackView.Immediate)
+                    menublock.page = 3
+                    console.info("image warnings clicked!")
+                    console.info("push to page 3")
+                }
+                else{
+                    stackview.pop()
+                    stackview.push("P1.ui.qml",StackView.Immediate)
+                    menublock.page = 1
+                    console.info("image warnings clicked!")
+                    console.info("push to page 1")
+                }
             }
         }
     }

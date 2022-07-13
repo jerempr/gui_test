@@ -22,7 +22,7 @@ def Get_clean_datetime():
             D2[k] = f"0{D1[k]}"
         else :
             D2[k] = str(D1[k])
-    return f"{D2[0]}/{D2[1]}/{date.year}   {D2[2]}:{D2[3]}:{D2[4]}"
+    return f"<u>{D2[0]}/{D2[1]}/{date.year}</u>   {D2[2]}:{D2[3]}:{D2[4]}"
 
 
 class Sysinfo(QThread):
